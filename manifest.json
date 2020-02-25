@@ -11,7 +11,7 @@
     "128": "icons/panda_128px.png"
   },
   "background": {
-    "page": "index.html"
+    "scripts": ["js/bg.js"]
   },
   "browser_action": {
     "default_icon": "icons/panda_64px.png",
@@ -21,13 +21,17 @@
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
-      "js": ["js/indexPage.js"],
+      "js": ["js/bg.js"],
       "css": ["css/indexPage.css"],
       "run_at": "document_start"
     }
   ],
   "permissions": [
     "storage",
-    "notifications"
+    "notifications",
+    "cookies",
+    "tabs",
+    "http://*/*",
+    "https://*/*"
   ]
 }
