@@ -3,6 +3,12 @@
   "name": "cookie同步-开发者",
   "version": "0.0.1",
   "description": "cookie同步，用于本地开发前端项目时，同步其他网站的部分cookie使用",
+  "permissions": [
+    "cookies",
+    "http://*/*",
+    "https://*/*",
+    "http://localhost:*/*"
+  ],
   "icons": {
     "16": "icons/panda_16px.png",
     "32": "icons/panda_32px.png",
@@ -25,13 +31,5 @@
       "css": ["css/indexPage.css"],
       "run_at": "document_start"
     }
-  ],
-  "permissions": [
-    "storage",
-    "notifications",
-    "cookies",
-    "tabs",
-    "http://*/*",
-    "https://*/*"
   ]
 }

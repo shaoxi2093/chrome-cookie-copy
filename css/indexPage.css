@@ -32,9 +32,10 @@
 }
 
 .add-card {
-  width: 600px;
+  width: 520px;
   box-shadow: 0 0 4px #ddd;
-  height: 300px;
+  height: 260px;
+  padding: 10px;
 }
 
 .input-param {
@@ -60,6 +61,7 @@
 .input-tips {
   font-size: 12px;
   color: #666;
+  text-align: center;
 }
 
 .input-label {
@@ -116,3 +118,8 @@
 .input-text {}
 
 .add-pages-btn {}
+
+.msg-error {
+  display: none;
+  color: #ff0000;
+}
