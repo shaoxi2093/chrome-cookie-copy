@@ -1,36 +1,79 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link rel="stylesheet" href="./css/indexPage.css" />
   </head>
   <body>
-    <div class="pages-wrapper">
+    <div>
+      <span class="">是否开启同步</span>
+      <button
+        id="switchMain"
+        type="button"
+        role=""
+        class="switch switch-checked"
+      >
+        <span id="switchValue" class="switch-inner"></span>
+      </button>
     </div>
-    <div class="add-card">
-      <div class="input-param">
-        <span class="input-label">名称(必填)：</span>
-        <input class="input input-value" type="text" id="name" placeholder="请输入方便区分的名称" />
+    <div class="main">
+      <div class="mask"></div>
+      <div class="pages-wrapper"></div>
+      <div class="add-card">
+        <div class="input-param">
+          <span class="input-label">名称(必填)：</span>
+          <input
+            class="input input-value"
+            type="text"
+            id="name"
+            placeholder="请输入方便区分的名称"
+          />
+        </div>
+        <p class="input-tips">
+          &#9749;输入需要拷贝的域名，eg.
+          www.baidu.com、localhost:3000，无需写http、https
+        </p>
+        <div class="input-param">
+          <span class="input-label">源网址(必填)：</span>
+          <input
+            class="input input-value"
+            type="text"
+            id="originUrl"
+            placeholder="请输入需要拷贝的网址"
+          />
+        </div>
+        <div class="input-param">
+          <span class="input-label">目的网址(必填)：</span>
+          <input
+            class="input input-value"
+            type="text"
+            id="goatUrl"
+            placeholder="请输入需要使用的网址"
+          />
+        </div>
+        <div class="input-param">
+          <span class="input-label">Cookies(必填)：</span>
+          <textarea
+            class="input input-textarea input-value input-text"
+            id="goatCookie"
+            placeholder="请输入需要同步的cookie，多个使用英文逗号“,”分隔"
+          ></textarea>
+        </div>
+        <button
+          id="saveSetting"
+          class="btn btn-primary btn-small"
+          style="display: block;"
+        >
+          保存
+        </button>
+        <p class="msg-error">请填写完整表单</p>
       </div>
-      <p class="input-tips">&#9749;输入需要拷贝的域名，eg. www.baidu.com、localhost:3000，无需写http、https</p>
-      <div class="input-param">
-        <span class="input-label">源网址(必填)：</span>
-        <input class="input input-value" type="text" id="originUrl" placeholder="请输入需要拷贝的网址" />
-      </div>
-      <div class="input-param">
-        <span class="input-label">目的网址(必填)：</span>
-        <input class="input input-value" type="text" id="goatUrl" placeholder="请输入需要使用的网址" />
-      </div>
-      <div class="input-param">
-        <span class="input-label">Cookies(必填)：</span>
-        <textarea class="input input-textarea input-value input-text" id="goatCookie" placeholder="请输入需要同步的cookie，多个使用英文逗号“,”分隔"></textarea>
-      </div>
-      <button id="saveSetting" class="btn btn-primary btn-small" style="display: block;">保存</button><p class="msg-error">请填写完整表单</p>
+      <button class="btn btn-primary btn-small add-pages-btn">新增关联</button>
     </div>
-    <button class="btn btn-primary btn-small add-pages-btn">新增关联</button>
-    
+
+    <script type="text/javascript" src="./js/jquery-min.js"></script>
     <script type="text/javascript" src="./js/indexPage.js"></script>
   </body>
 </html>

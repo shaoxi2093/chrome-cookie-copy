@@ -4,6 +4,7 @@
   "version": "0.0.1",
   "description": "cookie同步，用于本地开发前端项目时，同步其他网站的部分cookie使用",
   "permissions": [
+    "storage",
     "cookies",
     "http://*/*",
     "https://*/*",
@@ -23,13 +24,5 @@
     "default_icon": "icons/panda_64px.png",
     "default_title": "cookie同步-开发者",
     "default_popup": "index.html"
-  },
-  "content_scripts": [
-    {
-      "matches": ["<all_urls>"],
-      "js": ["js/bg.js"],
-      "css": ["css/indexPage.css"],
-      "run_at": "document_start"
-    }
-  ]
+  }
 }
