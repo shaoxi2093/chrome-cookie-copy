@@ -20,7 +20,9 @@
     </div>
     <div class="main">
       <div class="mask"></div>
-      <div class="pages-wrapper"></div>
+      <div class="pages-wrapper">
+        <p></p>
+      </div>
       <div class="add-card">
         <div class="input-param">
           <span class="input-label">名称(必填)：</span>
@@ -61,18 +63,23 @@
             placeholder="请输入需要同步的cookie，多个使用英文逗号“,”分隔"
           ></textarea>
         </div>
-        <button
-          id="saveSetting"
-          class="btn btn-primary btn-small"
-          style="display: block;"
-        >
-          保存
-        </button>
+        <div class="btns-wrapper">
+          <button id="saveSettingCancel" class="btn btn-info btn-small">
+            取消
+          </button>
+          <button id="saveSetting" class="btn btn-primary btn-small">
+            保存
+          </button>
+        </div>
+
         <p class="msg-error">请填写完整表单</p>
       </div>
-      <button class="btn btn-primary btn-small add-pages-btn">新增关联</button>
+      <button id="addNewAsync" class="btn btn-primary btn-small add-pages-btn">
+        新增关联
+      </button>
     </div>
-
+    <script type="text/javascript" src="./js/lodash.min.js"></script>
+    
     <script type="text/javascript" src="./js/jquery-min.js"></script>
     <script type="text/javascript" src="./js/indexPage.js"></script>
   </body>

@@ -1,24 +1,63 @@
 $(document).ready(function() {
 
-  chrome.storage.sync.get(['openAsync'], ({openAsync}) => {
-    if(openAsync) {
-      $('#switchMain').addClass('switch-checked')
-    } else {
-      $('#switchMain').removeClass('switch-checked')
-    }
-  })
+  initPage()
+  initPageEvent() 
 
-  $('#switchMain').click(() => {
-    const preValue = $('#switchMain').hasClass('switch-checked')
-    if(preValue) {
-      $('#switchMain').removeClass('switch-checked')
-      $('.mask').addClass('mask-active')
-    } else {
-      $('#switchMain').addClass('switch-checked')
-      $('.mask').removeClass('mask-active')
-    }
-    switchAsync(!preValue)
-  })
+
+  function initPage () {
+    chrome.storage.sync.get(['openAsync'], ({openAsync}) => {
+      if(openAsync) {
+        $('#switchMain').addClass('switch-checked')
+      } else {
+        $('#switchMain').removeClass('switch-checked')
+      }
+    })
+
+    
+  }
+
+
+  function initPageEvent() {
+    $('#switchMain').click(() => {
+      const preValue = $('#switchMain').hasClass('switch-checked')
+      if(preValue) {
+        $('#switchMain').removeClass('switch-checked')
+        $('.mask').addClass('mask-active')
+      } else {
+        $('#switchMain').addClass('switch-checked')
+        $('.mask').removeClass('mask-active')
+      }
+      switchAsync(!preValue)
+    })
+  
+    $('#saveSettingCancel').click(() => {
+      resetFormValues()
+      $('.add-card').removeClass('add-card-active')
+    })
+  
+    $('#addNewAsync').click(() => {
+      if($('.add-card').hasClass('add-card-active')) {
+        return
+      }
+      resetFormValues()
+      $('.add-card').addClass('add-card-active')
+    })
+  }
+
+  
+
+  function saveAsync(values = {}, callback = () => {}) {
+    chrome.storage.sync.get(['pages'], ({pages}) => {
+      if(values.id) {
+        const newPages = { ...pages, [values.id]: values }
+        chrome.storage.sync.set({ pages: newPages })
+      } else {
+        const id = 'pageId_' + Math.round(Math.random() * 100000)
+        chrome.storage.sync.set({ pages: {...pages, [id]: values }})
+      }
+    })
+    
+  }
 
   function switchAsync(open = false) {
     chrome.storage.sync.set({openAsync: open})
