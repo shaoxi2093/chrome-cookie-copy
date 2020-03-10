@@ -1,0 +1,29 @@
+@font-face {font-family: "iconfont";
+  src: url('../static/icon/=1583827205409'); /* IE9 */
+  src: url('../static/icon/=1583827205409#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('data:application/x-font-woff2;charset=utf-8;base64,d09GMgABAAAAAAPMAAsAAAAACDgAAAN9AAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHEIGVgCDHAqDeIM4ATYCJAMQCwoABCAFhG0HRBsmB8iegW1bOrZmDZ3bRodyRDVfjYfvx76d+979qml304InreIRT64hbgUPDTIhemdIREKyEnZonN0AP+BEJAhIkBIqFXdwP/+WBXZAq6JKSn15rwMHOhvZJ/lVrf4/x0yXHkD5bTaXrKTR3gBH0TqwiOTRid4J4z3EW13aYd8n0LVGAeTY4faEskSXBeKRKnNQTqllTW5oC82SvSnegYZ2eQ49BLz1/z7+gz2BpmhUdO3pO3sRVn/GHhZhWfwsl1wE4IxnBH+Iit2AJO6Vmm/IheHdYLrq5LwDgLa2wlgjCw+LfD5y9yJum//yCEUlmmh2H+xDUT0xjk0j+LNAo/BnUeIm0bm4jRbe4wdiVwqLFL11CTz9ge2pjfPtdL+6kpFslm/jaOkwKB8ujYnb12KF3hszQulw1hAdXzIEcmMYR3o5CvGsthKORsxCJZYo4iQJg3JYLyRexFQTWLh6pdOntIIBrRsqGYE4GsKN+DNmakNfUzPDvn6Q1xrX1w6Xl3ZXV/Y3N46NHQt0jpllAhPe0vzGH8p+f25uFnHFuEWfkggUHoXolTFYt/XJjiqjHyrtiQVZpxeYb8uV7YD9THlwC1CIq+4M+wnz7XSW1RvzvyvyCt/JmqjvO7upPp4WqfaEa9R4UG8c5uM9MwEM2bP2Xh+cT9h2WvDW+j8Zd8nwuY+POUcABw18Lj4zDP5uajtVfKh27LVss3ODXz08hDWbDGQ4mxph+9uoevAMYHORkONT1CyYPHJ0PwTBr2rfGKal/YvGXWDT7/IQBLg2JWjP+UkclfM3OS1rUuNRTabCt9m6JZ1KJCnomjr+YZypuzGki9bZhLZFDEXLKlRt68jE7oaGnn3Q1HYQunYxO9wzEyMnsoOd8gmEsUkohr5DNXaETOwtNCy9QtM4YNB1MWhn9myN4KqRR1xAIvokY7CvbUmWLqgGuXeSQ4Pzkjyf+CbPV32oqqSSjR3JIm+MDbEJ8jAuTsKAGNtEU/IYGYaNUTG2RkLQDYoLnKWyckDZl7q+kSZUHeUhnAARIR8pFExgs0hu40A19/t3RBYycLyaqir9G/H41PGRKiUqLZBHsdWq6lomx4rIhuIEJGZRAI/NhEzBSAwzbENR5bM0RBDoCuoRdCwpY72AtuLu/FLzCXdBFz0ro0SNjIbmDZWzNLUUq3hGQQm51JBLVAsAAAAA') format('woff2'),
+  url('../static/icon/iconfont.woff?t=1583827205409') format('woff'),
+  url('../static/icon/iconfont.ttf?t=1583827205409') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+ */
+  url('../static/icon/iconfont.svg?t=1583827205409#iconfont') format('svg'); /* iOS 4.1- */
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-bianji:before {
+  content: "\e8ac";
+}
+
+.icon-shanchu:before {
+  content: "\e8b6";
+}
+
+.icon-shuaxin:before {
+  content: "\e8bc";
+}
+

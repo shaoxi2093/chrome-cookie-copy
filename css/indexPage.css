@@ -1,8 +1,87 @@
 .pages-wrapper {
   width: 320px;
-  min-height: 60px;
+  min-height: 40px;
   border: 1px solid #ddd;
   margin: 12px auto 20px;
+}
+
+.pages-wrapper .pages-none {
+  color: #666;
+  font-size: 14px;
+  line-height: 20px;
+  text-align: center;
+}
+
+.pages-wrapper .pages-item {
+  padding: 2px 8px;
+  border-bottom: 1px solid #ddd;
+}
+
+.pages-wrapper .iconfont {
+  cursor: pointer;
+}
+
+.item-name {
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 32px;
+  float: left;
+  width: 240px;
+}
+
+.page-name {
+  max-width: 160px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  color: #333;
+}
+
+.pages-wrapper .icon-shuaxin {
+  color: #409EFF;
+  padding-right: 6px;
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 32px;
+  transition: all 1s ease;
+  display: inline-block;
+  text-align: center;
+}
+
+.pages-item .pages-item-switch {
+  float: right;
+  margin-top: 6px;
+}
+
+.pages-item::after {
+  content: ' ';
+  display: block;
+  clear: both;
+}
+
+.icon-shuaxin-round {
+  transform: rotate(360deg);
+}
+
+.item-opts {
+  transform: translateY(-10px);
+  height: 20px;
+  line-height: 20px;
+  display: inline-block;
+  margin-left: 8px;
+}
+
+.icon-bianji, .icon-shanchu {
+  font-size: 14px;
+  color: #666;
+}
+
+.icon-bianji:hover, .icon-shanchu:hover {
+  color: #409EFF;
+}
+
+.pages-wrapper .pages-item:last-child {
+  border: none;
 }
 
 .main {

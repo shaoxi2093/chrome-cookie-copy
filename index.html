@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link rel="stylesheet" href="./css/indexPage.css" />
+    <link rel="stylesheet" href="./css/iconfont.css" />
   </head>
   <body>
     <div>
@@ -12,16 +13,31 @@
       <button
         id="switchMain"
         type="button"
-        role=""
         class="switch switch-checked"
       >
-        <span id="switchValue" class="switch-inner"></span>
+        <span class="switch-inner"></span>
       </button>
     </div>
     <div class="main">
       <div class="mask"></div>
       <div class="pages-wrapper">
-        <p></p>
+        <p class="pages-none">暂无配置任何同步</p>
+        <div class="pages-item">
+          <div class="item-name">
+            <i class="iconfont icon-shuaxin" title="刷新同步"></i>
+            <span class="page-name" title="日常同步">日常同步</span>
+            <div class="item-opts">
+              <i class="iconfont icon-bianji" title="编辑"></i>
+              <i class="iconfont icon-shanchu" title="删除"></i>
+            </div>
+          </div>
+          <button
+            type="button"
+            class="switch switch-checked pages-item-switch"
+          >
+            <span class="switch-inner"></span>
+          </button>
+        </div>
       </div>
       <div class="add-card">
         <div class="input-param">
@@ -30,7 +46,7 @@
             class="input input-value"
             type="text"
             id="name"
-            placeholder="请输入方便区分的名称"
+            placeholder="请输入方便区分的名称，如A->B"
           />
         </div>
         <p class="input-tips">

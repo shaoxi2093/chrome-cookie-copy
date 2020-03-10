@@ -12,8 +12,12 @@ $(document).ready(function() {
         $('#switchMain').removeClass('switch-checked')
       }
     })
+  }
 
-    
+  function refreshPagesData() {
+    chrome.storage.sync.get(['pages'], ({ pages }) => {
+
+    })
   }
 
 
@@ -28,6 +32,24 @@ $(document).ready(function() {
         $('.mask').removeClass('mask-active')
       }
       switchAsync(!preValue)
+    })
+
+    $('#saveSetting').click(() => {
+      const values = getFormValues()
+      if(!values) {
+        return
+      }
+      saveAsync(values, () => {
+        resetFormValues()
+      })
+    })
+
+    $('.pages-item').delegate('.icon-shuaxin', 'click', function(e) {
+      $(this).addClass('icon-shuaxin-round')
+    })
+
+    $('.pages-item').on('click', '.pages-item-switch', () => {
+
     })
   
     $('#saveSettingCancel').click(() => {
@@ -55,6 +77,7 @@ $(document).ready(function() {
         const id = 'pageId_' + Math.round(Math.random() * 100000)
         chrome.storage.sync.set({ pages: {...pages, [id]: values }})
       }
+      callback && callback()
     })
     
   }
