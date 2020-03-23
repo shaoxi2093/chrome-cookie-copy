@@ -21,14 +21,15 @@ $(document).ready(function() {
           const html = `
             <div class="pages-item">
               <div class="item-name">
-                <i data-key="${key}" class="iconfont icon-shuaxin" title="刷新同步"></i>
+                <i data-id="${key}" class="iconfont icon-shuaxin" title="刷新同步"></i>
                 <span class="page-name" title="日常同步">${pages[key].name}</span>
                 <div class="item-opts">
-                  <i data-key="${key}" class="iconfont icon-bianji" title="编辑"></i>
-                  <i data-key="${key}" class="iconfont icon-shanchu" title="删除"></i>
+                  <i data-id="${key}" class="iconfont icon-bianji" title="编辑"></i>
+                  <i data-id="${key}" class="iconfont icon-shanchu" title="删除"></i>
                 </div>
               </div>
               <button
+                data-id="${key}"
                 type="button"
                 class="switch ${
                   pages[key].switchOn ? "switch-checked" : ""
@@ -44,6 +45,19 @@ $(document).ready(function() {
       
       $('.pages-wrapper').html(innerHtmlStr || `<p class="pages-none">暂无配置任何同步</p>`)
     });
+  }
+
+  function showMessage(msg) {
+    var msgNode = document.createElement('div')
+    msgNode.className = 'message-tips'
+    msgNode.innerText = msg
+    document.body.appendChild(msgNode)
+    setTimeout(() => {
+      msgNode.className = 'message-tips message-tips-motion'
+    }, 1000)
+    setTimeout(() => {
+      document.body.removeChild(msgNode)
+    }, 3000)
   }
 
   function initPageEvent() {
@@ -70,13 +84,32 @@ $(document).ready(function() {
       });
     });
 
-    $(".pages-item").delegate(".icon-shuaxin", "click", function(e) {
-      $(this).addClass("icon-shuaxin-round");
+    $(".pages-wrapper").delegate(".icon-shuaxin", "click", function(e) {
+      const id = $(this).data('id')
+      refreshCookieByPageId(id)
     });
 
-    $(".pages-item").on("click", ".pages-item-switch", () => {});
-    $(".pages-item").on("click", ".icon-bianji", () => {});
-    $(".pages-item").on("click", ".icon-shanchu", () => {});
+    $(".pages-wrapper").delegate(".pages-item-switch", "click", function() {
+      const preValue = $(this).hasClass("switch-checked");
+      const pageId = $(this).data('id')
+      if (preValue) {
+        $(this).removeClass("switch-checked");
+      } else {
+        $("#switchMain").addClass("switch-checked");
+      }
+      switchItemAsync(pageId, !preValue, () => {
+        refreshPagesData()
+      });
+    });
+    $(".pages-wrapper").delegate(".icon-bianji", "click", function() {
+      alert('暂未支持')
+    });
+    $(".pages-wrapper").delegate(".icon-shanchu", "click", function() {
+      const id = $(this).data('id')
+      deleteAsync(id, () => {
+        refreshPagesData()
+      })
+    });
 
     $("#saveSettingCancel").click(() => {
       resetFormValues();
@@ -89,6 +122,44 @@ $(document).ready(function() {
       }
       resetFormValues();
       $(".add-card").addClass("add-card-active");
+    });
+  }
+
+  function refreshCookieByPageId(id, callback) {
+    if(!id) {
+      return
+    }
+    chrome.storage.sync.get(["pages"], ({pages}) => {
+      chrome.cookies.getAll({domain: pages[id].originUrl}, (resultCookiesArr) => {
+        for(const item of pages[id].goatCookie.split(',')) {
+          const objFound = resultCookiesArr.find(c => c.name == item)
+          if(objFound) {
+            chrome.cookies.set(
+              {
+                name: item,
+                value: objFound.value,
+                domain: pages[id].goatUrl.indexOf('localhost') > -1 ? "localhost" : pages[id].goatUrl,
+                url: pages[id].goatUrl.indexOf('localhost') > -1 ? `http://${pages[id].goatUrl}` : `https://${pages[id].goatUrl}`
+              },
+              () => {
+                showMessage("手动同步成功");
+              }
+            );
+          }
+          
+        }
+      })
+    })
+    callback && callback()
+  }
+
+  function deleteAsync(id, callback) {
+    chrome.storage.sync.get(["pages"], ({ pages }) => {
+      if (pages[id]) {
+        delete pages[id]
+        chrome.storage.sync.set({ pages });
+      }
+      callback && callback();
     });
   }
 
@@ -107,6 +178,19 @@ $(document).ready(function() {
 
   function switchAsync(open = false) {
     chrome.storage.sync.set({ openAsync: open });
+  }
+
+  function switchItemAsync(pageId, open = false, callback) {
+    chrome.storage.sync.get(["pages"], ({ pages }) => {
+      if (pages[pageId]) {
+        const newPages = { ...pages, [pageId]: {
+          ...pages[pageId],
+          switchOn: open,
+        }};
+        chrome.storage.sync.set({ pages: newPages });
+      }
+      callback && callback();
+    });
   }
 
   function resetFormValues(page = {}) {
