@@ -332,3 +332,7 @@
 .message-tips-motion {
   opacity: 0;
 }
+
+.btns-wrapper {
+  text-align: center;
+}
